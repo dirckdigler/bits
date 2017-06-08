@@ -1,0 +1,11 @@
+name = Bits Americas
+description = Form consume external JSON from URL.
+version = "7.x.0.1"
+core = 7.x
+package = Bits
+
+; Files
+files[] = includes/bitsamericas.forms.inc
+files[] = includes/bitsamericas.functions.inc
+
+configure = bitsamericas/seetings

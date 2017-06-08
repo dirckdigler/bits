@@ -1,0 +1,78 @@
+<?php
+
+
+/**
+ * @file
+ * This is the file description for form custom ('DAYSCRIPT').
+ *
+ * In this more verbose, multi-line description, you can specify what this
+ * file does exactly.
+ *
+ * @author Edwin Vega Moreno ('Developer Web Junior('Drupal')')
+ */
+
+/**
+ * Implements hook_entity_info().
+ */
+function bitsamericas_entity_info() {
+  return array(
+      'bitsamericas' => array(
+      'label' => t('Bitsamericas table'),
+      'base table' => 'endponint_settings',
+      'entity keys' => array(
+        'id' => 'uid',
+      ),
+    ),
+  );
+}
+
+/**
+* Implements hook_schema()
+*/
+function bitsamericas_schema() {
+
+	$schema['endponint_settings'] = array(
+	  'description' => 'This is a table for my custom module',
+	  'fields' => array(
+    	'uid' => array(
+        'description' => 'Identificador de la tabla.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE
+  		),
+		  'endpoint_base' => array(
+				'description' => 'Endpoint base',
+				'type' => 'varchar',
+				'length' => 255,
+				'not null' => TRUE,
+				'default' => ''
+			),
+			'appid' => array(
+				'description' => 'Appid',
+				'type' => 'varchar',
+				'length' => 255,
+				'not null' => TRUE,
+				'default' => ''
+			),
+			'units' => array(
+				'description' => 'Units',
+				'type' => 'varchar',
+				'length' => 255,
+				'not null' => TRUE,
+				'default' => ''
+			),      
+		),
+		'primary key' => array('uid'),
+ );
+
+  	return $schema;
+}
+
+
+/**
+* Implements hook_uninstall()
+*/
+function bitsamericas_uninstall() {
+
+    node_type_delete('endponint_settings');
+}
